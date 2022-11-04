@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_playground/config/colors/colors.dart';
+import 'package:nursing_home/config/colors/colors.dart';
 
 class AppTheme {
   const AppTheme._();

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_playground/config/config.dart';
-import 'package:flutter_playground/l10n/l10n.dart';
+import 'package:nursing_home/config/config.dart';
+import 'package:nursing_home/l10n/l10n.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
