@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_playground/config/config.dart';
-import 'package:flutter_playground/config/di/di.dart';
-import 'package:flutter_playground/features/authentication/domain/entities/registered_user.dart';
-import 'package:flutter_playground/features/features.dart';
-import 'package:flutter_playground/features/shared/presentation/widgets/common.dart';
-import 'package:flutter_playground/l10n/l10n.dart';
+import 'package:nursing_home/config/config.dart';
+import 'package:nursing_home/config/di/di.dart';
+import 'package:nursing_home/features/authentication/domain/entities/registered_user.dart';
+import 'package:nursing_home/features/features.dart';
+import 'package:nursing_home/features/shared/presentation/widgets/common.dart';
+import 'package:nursing_home/l10n/l10n.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'package:go_router/go_router.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_playground/config/config.dart';
+import 'package:nursing_home/config/config.dart';
 
 class DefaultButton extends StatelessWidget {
   const DefaultButton({

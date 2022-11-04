@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_playground/config/config.dart';
+import 'package:nursing_home/config/config.dart';
 
 void setSnackbar(BuildContext context, String msg) {
   ScaffoldMessenger.of(context).showSnackBar(

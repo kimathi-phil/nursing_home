@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_playground/features/tasks/data/models/task_model.dart';
-import 'package:flutter_playground/features/tasks/domain/usecases/usecases.dart';
+import 'package:nursing_home/features/tasks/data/models/task_model.dart';
+import 'package:nursing_home/features/tasks/domain/usecases/usecases.dart';
 import 'package:injectable/injectable.dart';
 
 part 'user_state.dart';

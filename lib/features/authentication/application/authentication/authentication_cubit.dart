@@ -2,8 +2,8 @@ import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_playground/features/authentication/domain/entities/entities.dart';
-import 'package:flutter_playground/features/authentication/domain/usecases/usecases.dart';
+import 'package:nursing_home/features/authentication/domain/entities/entities.dart';
+import 'package:nursing_home/features/authentication/domain/usecases/usecases.dart';
 import 'package:injectable/injectable.dart';
 part 'authentication_state.dart';
 

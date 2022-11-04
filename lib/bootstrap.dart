@@ -4,7 +4,7 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/widgets.dart';
-// import 'package:flutter_playground/config/di/di.dart';
+import 'package:nursing_home/config/di/di.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 
 class AppBlocObserver extends BlocObserver {
@@ -23,7 +23,7 @@ class AppBlocObserver extends BlocObserver {
 
 Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   WidgetsFlutterBinding.ensureInitialized();
-  // await registerDependencies();
+  await registerDependencies();
   await Firebase.initializeApp();
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);
