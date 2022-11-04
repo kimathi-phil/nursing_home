@@ -1,5 +1,5 @@
 <p align="center"><img src="assets/images/logo.png" alt="logo.png" height="150px"></p>
-<h1 align="center">Nursing Home</h1></br>
+<h1 align="center">Concept Care</h1></br>
 
 <p align="center">
   <a href="https://github.com/kimathi-phil/nursing_home/actions/workflows/ci.yaml"><img alt="ci_build_status" src="https://github.com/kimathi-phil/flutter_remote_control_test/actions/workflows/ci.yaml/badge.svg"/></a>

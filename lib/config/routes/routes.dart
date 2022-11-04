@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter_playground/features/features.dart';
+import 'package:nursing_home/features/features.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRouter {
@@ -13,22 +13,22 @@ class AppRouter {
   static final GoRouter router = GoRouter(
     debugLogDiagnostics: kDebugMode,
     routes: [
-      // GoRoute(
-      //   name: signIn,
-      //   path: '/signIn',
-      //   pageBuilder: (context, state) => MaterialPage(
-      //     key: state.pageKey,
-      //     child: const SignInScreen(),
-      //   ),
-      // ),
-      // GoRoute(
-      //   name: home,
-      //   path: '/home',
-      //   pageBuilder: (context, state) => MaterialPage(
-      //     key: state.pageKey,
-      //     child: TasksScreen(uid: state.queryParams['uid']!),
-      //   ),
-      // ),
+      GoRoute(
+        name: signIn,
+        path: '/signIn',
+        pageBuilder: (context, state) => MaterialPage(
+          key: state.pageKey,
+          child: const SignInScreen(),
+        ),
+      ),
+      GoRoute(
+        name: home,
+        path: '/home',
+        pageBuilder: (context, state) => MaterialPage(
+          key: state.pageKey,
+          child: TasksScreen(uid: state.queryParams['uid']!),
+        ),
+      ),
     ],
     initialLocation: '/signIn',
     errorPageBuilder: (context, state) => MaterialPage(

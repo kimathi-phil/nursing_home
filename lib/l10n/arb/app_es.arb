@@ -3,5 +3,45 @@
     "counterAppBarTitle": "Contador",
     "@counterAppBarTitle": {
         "description": "Texto mostrado en la AppBar de la página del contador"
+    },
+    "signIn": "Sign In",
+    "email": "Email",
+    "password": "Password",
+    "show": "Show Password",
+    "find": "Find ",
+    "@find": {
+        "description": "Text shown as Find on the Doctor Screen"
+    },
+    "yourDoctor": "your doctor",
+    "@yourDoctor": {
+        "description": "Text shown as Your Doctor on the Doctor Screen"
+    },
+    "searchPlaceholder": "Search doctor, medicines, etc",
+    "@searchPlaceholder": {
+        "description": "Text shown as the Placeholder of the Doctor Screen Searchbar"
+    },
+    "topDoctors": "Top Doctors",
+    "@topDoctors": {
+        "description": "Text shown as Title on the Top Doctors section"
+    },
+    "viewAll": "View All",
+    "@viewAll": {
+        "description": "View All"
+    },
+    "experience": "Experience",
+    "@experience": {
+        "description": "Experience"
+    },
+    "patient": "Patient",
+    "@patient": {
+        "description": "Patient"
+    },
+    "rating": "Rating",
+    "@rating": {
+        "description": "Rating"
+    },
+    "makeAnAppointment": "Make an Appointment",
+    "@makeAnAppointment": {
+        "description": "Text shown in the Make an Appointment button of the Doctor Detail Screen"
     }
 }
