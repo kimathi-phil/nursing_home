@@ -1,0 +1,14 @@
+name: 'Cron Jobs'
+on:
+  schedule:
+    - cron: '0 1 * * 0' # 'min (0 - 59) | hour (0 - 23 UTC) | day of month (1 - 31) | month (1 - 12) | day of week (0 - 7) (0 to 6 are Sunday to Saturday, or use names; 7 is Sunday, the same as 0)'
+    # - cron: '0 * * * *' # every hour
+
+jobs:
+  delete-artifacts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: kolpav/purge-artifacts-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          expire-in: 3days # Setting this to 0 will delete all artifacts

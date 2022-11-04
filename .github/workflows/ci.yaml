@@ -1,0 +1,16 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  pull-request-check:
+    uses: ./.github/workflows/pull_request.yaml
+
+  ci:
+    uses: ./.github/workflows/main.yaml
+    with:
+      flutter_channel: stable
+      flutter_version: 3.3.6
