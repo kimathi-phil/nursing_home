@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter_playground/features/features.dart';
+import 'package:flutter_playground/features/features.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRouter {
@@ -13,14 +13,14 @@ class AppRouter {
   static final GoRouter router = GoRouter(
     debugLogDiagnostics: kDebugMode,
     routes: [
-      // GoRoute(
-      //   name: signIn,
-      //   path: '/signIn',
-      //   pageBuilder: (context, state) => MaterialPage(
-      //     key: state.pageKey,
-      //     child: const SignInScreen(),
-      //   ),
-      // ),
+      GoRoute(
+        name: signIn,
+        path: '/signIn',
+        pageBuilder: (context, state) => MaterialPage(
+          key: state.pageKey,
+          child: const SignInScreen(),
+        ),
+      ),
       // GoRoute(
       //   name: home,
       //   path: '/home',
