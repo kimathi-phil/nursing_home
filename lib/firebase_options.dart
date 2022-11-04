@@ -70,7 +70,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '147460607214',
     projectId: 'crypto-wallet-b18f6',
     storageBucket: 'crypto-wallet-b18f6.appspot.com',
-    iosClientId: '147460607214-tm46ie693a6t27m1d6loqqvtn8rms26i.apps.googleusercontent.com',
+    iosClientId:
+        '147460607214-tm46ie693a6t27m1d6loqqvtn8rms26i.apps.googleusercontent.com',
     iosBundleId: 'com.bynarr.nursing-home',
   );
 }
