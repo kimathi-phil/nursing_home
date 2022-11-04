@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "147460607214",
+    "project_id": "crypto-wallet-b18f6",
+    "storage_bucket": "crypto-wallet-b18f6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:147460607214:android:2aa7fc499c1f5b3f74b7ff",
+        "android_client_info": {
+          "package_name": "com.bynarr.flutter_playground"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "147460607214-f80obge0r569oc5imd56jhcilrdtv9n1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEo1sDBjVjjtklD5LwbFneBqDKJIuSPYI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "147460607214-f80obge0r569oc5imd56jhcilrdtv9n1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "147460607214-sn50v4aq5mntvmf5o8vid1o9dvvrc43p.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.bynarr.flutter-playground"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:147460607214:android:b0ee5ff2c6f1325174b7ff",
+        "android_client_info": {
+          "package_name": "com.bynarr.nursing_home"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "147460607214-f80obge0r569oc5imd56jhcilrdtv9n1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEo1sDBjVjjtklD5LwbFneBqDKJIuSPYI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "147460607214-f80obge0r569oc5imd56jhcilrdtv9n1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "147460607214-sn50v4aq5mntvmf5o8vid1o9dvvrc43p.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.bynarr.flutter-playground"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

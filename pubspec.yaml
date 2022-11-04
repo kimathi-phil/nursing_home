@@ -1,0 +1,41 @@
+name: nursing_home
+description: A simple task management app for nurses in a nursing home.
+version: 1.0.0+1
+publish_to: none
+
+environment:
+  sdk: ">=2.18.0 <3.0.0"
+  flutter: 3.3.6
+
+dependencies:
+  bloc: ^8.1.0
+  cloud_firestore: ^4.0.3
+  cupertino_icons: ^1.0.5
+  equatable: ^2.0.5
+  firebase_auth: ^4.1.0
+  firebase_core: ^2.1.1
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^8.1.1
+  flutter_localizations:
+    sdk: flutter
+  flutter_svg_provider: ^1.0.3
+  get_it: ^7.2.0
+  go_router: ^5.1.1
+  injectable: ^1.5.4
+  intl: ^0.17.0
+  json_annotation: ^4.7.0
+
+dev_dependencies:
+  bloc_test: ^9.1.0
+  build_runner: ^2.3.0
+  flutter_test:
+    sdk: flutter
+  injectable_generator: ^1.5.4
+  json_serializable: ^6.5.4
+  mocktail: ^0.3.0
+  very_good_analysis: ^3.0.2
+
+flutter:
+  uses-material-design: true
+  generate: true
