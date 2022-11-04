@@ -19,6 +19,7 @@ dependencies:
   flutter_bloc: ^8.1.1
   flutter_localizations:
     sdk: flutter
+  flutter_rating_bar: ^4.0.1
   flutter_svg_provider: ^1.0.3
   get_it: ^7.2.0
   go_router: ^5.1.1
@@ -39,3 +40,13 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   generate: true
+
+  assets:
+    - assets/
+    - assets/svg/
+    - assets/images/
+
+  fonts:
+    - family: Wigrum
+      fonts:
+        - asset: assets/fonts/wigrum_medium.otf
