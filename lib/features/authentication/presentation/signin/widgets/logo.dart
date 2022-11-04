@@ -13,13 +13,13 @@ class Logo extends StatelessWidget {
           decoration: const BoxDecoration(
             image: DecorationImage(
               fit: BoxFit.cover,
-              image: Svg('assets/images/logo.svg'),
+              image: Svg('assets/svg/logo.svg'),
             ),
           ),
         ),
         const SizedBox(height: size * 2),
         Text(
-          'Nursing Home',
+          'Concept Care',
           style: Theme.of(context).textTheme.bodyLarge,
         ),
       ],
