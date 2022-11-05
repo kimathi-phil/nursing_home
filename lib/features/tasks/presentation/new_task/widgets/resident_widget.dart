@@ -1,6 +1,6 @@
 part of '../new_task_modal.dart';
 
-String residentHint = 'Resident 1';
+String residentHint = 'Select a resident';
 
 var residentList = [
   'Resident 1',
