@@ -44,13 +44,17 @@ class _SignInButtonState extends State<SignInButton> {
           },
         ),
         color: kPrimaryColor,
-        onBtnSelected: () => context.read<AuthenticationCubit>().logIn(
-              UserDetails(
-                email: emailController.text,
-                password: passwordController.text,
-              ),
-            ),
+        onBtnSelected: () => login(context),
       ),
     );
   }
+}
+
+Future<void> login(BuildContext context) {
+  return context.read<AuthenticationCubit>().logIn(
+        UserDetails(
+          email: emailController.text,
+          password: passwordController.text,
+        ),
+      );
 }
