@@ -1,0 +1,1 @@
+export 'resident.dart';
