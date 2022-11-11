@@ -19,7 +19,7 @@ class TasksRepositoryImpl implements TasksRepository {
   Stream<List<Task>> getTasks({required String uid}) {
     try {
       return FireStoreRemote.getTasks(uid: uid)
-          .map((storedAlbums) => storedAlbums.toEntities());
+          .map((tasks) => tasks.toEntities());
     } catch (e) {
       return Stream.error(e.toString());
     }

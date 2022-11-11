@@ -48,7 +48,7 @@ class TasksScreen extends StatelessWidget {
           iconData: Icons.add_circle_outline_rounded,
           title: 'Add a new task',
           onBtnSelected: () {
-            showNewTaskModal(context);
+            showNewTaskModal(context, uid);
           },
         ),
       ),

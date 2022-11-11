@@ -7,12 +7,12 @@ part of 'task_model.dart';
 // **************************************************************************
 
 TaskModel _$TaskModelFromJson(Map<String, dynamic> json) => TaskModel(
-      id: json['id'] as String,
-      resident: json['resident'] as String? ?? '',
-      task: json['task'] as String? ?? '',
-      nurse: json['nurse'] as String? ?? '',
-      shift: json['shift'] as String? ?? '',
-      status: json['status'] as String? ?? '',
+      id: json['id'] as String? ?? '',
+      resident: json['resident'] as String,
+      task: json['task'] as String,
+      nurse: json['nurse'] as String,
+      shift: json['shift'] as String,
+      status: json['status'] as String,
     );
 
 Map<String, dynamic> _$TaskModelToJson(TaskModel instance) => <String, dynamic>{

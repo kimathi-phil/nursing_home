@@ -28,15 +28,20 @@ void showTaskDetailModal(BuildContext context, Task todo) {
               maxHeight: MediaQuery.of(context).size.height / 2.4,
             ),
             padding: const EdgeInsets.symmetric(horizontal: size * 2),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: size * 2),
-                getTaskDetailTItle(context, l10n),
-                const SizedBox(height: size + 4),
-                TaskDetailCard(todo: todo),
-                const SizedBox(height: size * 2),
-              ],
+            child: Scaffold(
+              backgroundColor: kGreyColor100,
+              body: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: size * 2),
+                    getTaskDetailTItle(context, l10n),
+                    const SizedBox(height: size + 4),
+                    TaskDetailCard(todo: todo),
+                    const SizedBox(height: size * 2),
+                  ],
+                ),
+              ),
             ),
           );
         },
