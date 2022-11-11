@@ -87,44 +87,69 @@ class TaskDetailCard extends StatelessWidget {
             ],
           ),
           const SizedBox(height: size * 2),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                child: DefaultButton(
-                  widget: Text(
-                    'Move to next shift',
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.headline6!.copyWith(
-                          color: kWhiteColor,
-                          fontWeight: FontWeight.normal,
+          todo.status != 'Done'
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: DefaultButton(
+                        widget: Text(
+                          'Move to next shift',
+                          textAlign: TextAlign.center,
+                          style:
+                              Theme.of(context).textTheme.headline6!.copyWith(
+                                    color: kWhiteColor,
+                                    fontWeight: FontWeight.normal,
+                                  ),
                         ),
-                  ),
-                  color: kBlackColor800,
-                  onBtnSelected: () async {
-                    Navigator.pop(context);
-                  },
-                ),
-              ),
-              const SizedBox(width: size * 4),
-              Expanded(
-                child: DefaultButton(
-                  widget: Text(
-                    'Complete task',
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.headline6!.copyWith(
-                          color: kWhiteColor,
-                          fontWeight: FontWeight.normal,
+                        color: kBlackColor800,
+                        onBtnSelected: () async {
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ),
+                    const SizedBox(width: size * 4),
+                    Expanded(
+                      child: DefaultButton(
+                        widget: Text(
+                          'Complete task',
+                          textAlign: TextAlign.center,
+                          style:
+                              Theme.of(context).textTheme.headline6!.copyWith(
+                                    color: kWhiteColor,
+                                    fontWeight: FontWeight.normal,
+                                  ),
                         ),
-                  ),
-                  color: kPrimaryColor,
-                  onBtnSelected: () async {
-                    Navigator.pop(context);
-                  },
+                        color: kPrimaryColor,
+                        onBtnSelected: () async {
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ),
+                  ],
+                )
+              : Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: DefaultButton(
+                        widget: Text(
+                          'This task has been completed',
+                          textAlign: TextAlign.center,
+                          style:
+                              Theme.of(context).textTheme.headline6!.copyWith(
+                                    color: kBlackColor800,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                        ),
+                        color: kGreyColor400,
+                        onBtnSelected: () async {
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ],
-          ),
         ],
       ),
     );
