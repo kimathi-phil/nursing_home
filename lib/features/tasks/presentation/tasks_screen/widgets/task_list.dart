@@ -31,7 +31,13 @@ class TaskList extends StatelessWidget {
                 )
               : const EmptyTasksWidget();
         }
-        return const Center(child: CircularProgressIndicator());
+        return Center(
+            child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            CircularProgressIndicator(),
+          ],
+        ));
       },
     );
   }

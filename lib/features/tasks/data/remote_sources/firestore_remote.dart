@@ -6,18 +6,19 @@ class FireStoreRemote {
 
   static Future<void> addTask({required TaskModel task}) async {
     var taskCollection = _firestore.collection('tasks');
-    await taskCollection.add(task.toJson());
+    await taskCollection.add(task.toFirestoreJson());
   }
 
   static Stream<List<TaskModel>> getTasks({required String uid}) {
     return _firestore
         .collection('tasks')
+        // .orderBy('shift', descending: true)
         .where('nurse', isEqualTo: uid)
         .snapshots(includeMetadataChanges: true)
         .map(
-          (snapshot) => snapshot.docs
-              .map((doc) => TaskModel.fromJson(doc.data()))
-              .toList(),
+          (snapshot) => snapshot.docs.map((doc) {
+            return TaskModel.fromJsonAndString(doc.data(), doc.id);
+          }).toList(),
         );
   }
 }

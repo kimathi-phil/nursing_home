@@ -22,7 +22,7 @@ class Password extends StatelessWidget {
         obscureText: !_showPassword,
         focusNode: passFocus,
         onFieldSubmitted: (v) {
-          fieldFocusChange(context, passFocus, passFocus);
+          login(context);
         },
         textInputAction: TextInputAction.next,
         style: const TextStyle(

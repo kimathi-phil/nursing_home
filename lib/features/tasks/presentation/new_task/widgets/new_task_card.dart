@@ -1,7 +1,9 @@
 part of '../new_task_modal.dart';
 
 class NewTaskCard extends StatelessWidget {
-  const NewTaskCard({super.key});
+  const NewTaskCard({super.key, required this.uid});
+
+  final uid;
 
   @override
   Widget build(BuildContext context) {
@@ -34,22 +36,68 @@ class NewTaskCard extends StatelessWidget {
             ],
           ),
           const SizedBox(height: size + 2),
-          DefaultButton(
-            widget: Text(
-              'Add New Task',
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.headline6!.copyWith(
-                    color: kWhiteColor,
-                    fontWeight: FontWeight.normal,
-                  ),
-            ),
-            color: kPrimaryColor,
-            onBtnSelected: () async {
-              Navigator.pop(context);
+          BlocListener<TasksCubit, TasksState>(
+            listener: (context, state) {
+              if (state is TasksFailed) {
+                setSnackbar(context, state.error);
+              } else if (state is TaskSuccess) {
+                Navigator.pop(context);
+                setSnackbar(context, 'Task added successfully');
+              }
             },
+            child: DefaultButton(
+              widget: BlocBuilder<TasksCubit, TasksState>(
+                builder: (context, state) {
+                  if (state is TasksLoading) {
+                    return const Center(
+                      child: SizedBox(
+                        width: size * 2,
+                        height: size * 2,
+                        child: CircularProgressIndicator(
+                          color: kWhiteColor,
+                        ),
+                      ),
+                    );
+                  } else {
+                    return Text(
+                      'Add New Task',
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.headline6!.copyWith(
+                            color: kWhiteColor,
+                            fontWeight: FontWeight.normal,
+                          ),
+                    );
+                  }
+                },
+              ),
+              color: kPrimaryColor,
+              onBtnSelected: () async => addTask(context),
+            ),
           ),
         ],
       ),
     );
+  }
+
+  Future<void> addTask(BuildContext context) {
+    if (currentResident != '' &&
+        taskController.text != '' &&
+        uid != '' &&
+        currentShift != '' &&
+        currentStatus != '') {
+      return context.read<TasksCubit>().addNewTask(
+            TaskModel(
+              resident: currentResident,
+              task: taskController.text,
+              nurse: uid,
+              shift: currentShift,
+              status: currentStatus,
+            ),
+          );
+    } else {
+      return Future.delayed(const Duration(milliseconds: 0), () {
+        setSnackbar(context, 'Please fill in all the fields.');
+      });
+    }
   }
 }

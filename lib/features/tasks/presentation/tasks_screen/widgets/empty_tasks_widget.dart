@@ -6,8 +6,13 @@ class EmptyTasksWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Seems like you have no tasks today.'),
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Text('Seems like you have no tasks today.'),
+        ],
+      ),
     );
   }
 }

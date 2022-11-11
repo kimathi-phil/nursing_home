@@ -7,16 +7,27 @@ part 'task_model.g.dart';
 @JsonSerializable()
 class TaskModel extends Equatable {
   const TaskModel({
-    required this.id,
-    this.resident = '',
-    this.task = '',
-    this.nurse = '',
-    this.shift = '',
-    this.status = '',
+    this.id = '',
+    required this.resident,
+    required this.task,
+    required this.nurse,
+    required this.shift,
+    required this.status,
   });
 
   factory TaskModel.fromJson(Map<String, dynamic> json) =>
       _$TaskModelFromJson(json);
+
+  factory TaskModel.fromJsonAndString(Map<String, dynamic> json, String id) {
+    return TaskModel(
+      id: id,
+      resident: json['resident'] as String? ?? '',
+      task: json['task'] as String? ?? '',
+      nurse: json['nurse'] as String? ?? '',
+      shift: json['shift'] as String? ?? '',
+      status: json['status'] as String? ?? '',
+    );
+  }
 
   @JsonKey(name: 'id')
   final String id;
@@ -27,6 +38,14 @@ class TaskModel extends Equatable {
   final String status;
 
   Map<String, dynamic> toJson() => _$TaskModelToJson(this);
+
+  Map<String, dynamic> toFirestoreJson() => <String, dynamic>{
+        'resident': resident,
+        'task': task,
+        'nurse': nurse,
+        'shift': shift,
+        'status': status,
+      };
 
   Task toEntity() {
     return Task(
@@ -53,134 +72,3 @@ class TaskModel extends Equatable {
 extension TaskModelX on List<TaskModel> {
   List<Task> toEntities() => map((model) => model.toEntity()).toList();
 }
-
-var todos = [
-  const TaskModel(
-    id: 'xHd4LbEXR7J1PHQHkuCv',
-    resident: 'Mr. Müller',
-    task: 'needs to be washed and have his breakfast finished until 11 am',
-    nurse: 'Marc',
-    shift: 'Morning',
-    status: 'Open',
-  ),
-  const TaskModel(
-    id: 'xHd4LbEXR7J1PHQHkuCv',
-    resident: 'Mr. Müller',
-    task: 'needs to be washed and have his breakfast finished until 11 am',
-    nurse: 'Marc',
-    shift: 'Morning',
-    status: 'Open',
-  ),
-  const TaskModel(
-    id: 'xHd4LbEXR7J1PHQHkuCv',
-    resident: 'Mr. Müller',
-    task: 'needs to be washed and have his breakfast finished until 11 am',
-    nurse: 'Marc',
-    shift: 'Morning',
-    status: 'Open',
-  ),
-  const TaskModel(
-    id: 'xHd4LbEXR7J1PHQHkuCv',
-    resident: 'Mr. Müller',
-    task: 'needs to be washed and have his breakfast finished until 11 am',
-    nurse: 'Marc',
-    shift: 'Morning',
-    status: 'Open',
-  ),
-  const TaskModel(
-    id: 'xHd4LbEXR7J1PHQHkuCv',
-    resident: 'Mr. Müller',
-    task: 'needs to be washed and have his breakfast finished until 11 am',
-    nurse: 'Marc',
-    shift: 'Morning',
-    status: 'Open',
-  ),
-  const TaskModel(
-    id: 'xHd4LbEXR7J1PHQHkuCv',
-    resident: 'Mr. Müller',
-    task: 'needs to be washed and have his breakfast finished until 11 am',
-    nurse: 'Marc',
-    shift: 'Morning',
-    status: 'Open',
-  ),
-  const TaskModel(
-    id: 'xHd4LbEXR7J1PHQHkuCv',
-    resident: 'Mr. Müller',
-    task: 'needs to be washed and have his breakfast finished until 11 am',
-    nurse: 'Marc',
-    shift: 'Morning',
-    status: 'Open',
-  ),
-  const TaskModel(
-    id: 'xHd4LbEXR7J1PHQHkuCv',
-    resident: 'Mr. Müller',
-    task: 'needs to be washed and have his breakfast finished until 11 am',
-    nurse: 'Marc',
-    shift: 'Morning',
-    status: 'Open',
-  ),
-  const TaskModel(
-    id: 'xHd4LbEXR7J1PHQHkuCv',
-    resident: 'Mr. Müller',
-    task: 'needs to be washed and have his breakfast finished until 11 am',
-    nurse: 'Marc',
-    shift: 'Morning',
-    status: 'Open',
-  ),
-  const TaskModel(
-    id: 'xHd4LbEXR7J1PHQHkuCv',
-    resident: 'Mr. Müller',
-    task: 'needs to be washed and have his breakfast finished until 11 am',
-    nurse: 'Marc',
-    shift: 'Morning',
-    status: 'Open',
-  ),
-  const TaskModel(
-    id: 'xHd4LbEXR7J1PHQHkuCv',
-    resident: 'Mr. Müller',
-    task: 'needs to be washed and have his breakfast finished until 11 am',
-    nurse: 'Marc',
-    shift: 'Morning',
-    status: 'Open',
-  ),
-  const TaskModel(
-    id: 'xHd4LbEXR7J1PHQHkuCv',
-    resident: 'Mr. Müller',
-    task: 'needs to be washed and have his breakfast finished until 11 am',
-    nurse: 'Marc',
-    shift: 'Morning',
-    status: 'Open',
-  ),
-  const TaskModel(
-    id: 'xHd4LbEXR7J1PHQHkuCv',
-    resident: 'Mr. Müller',
-    task: 'needs to be washed and have his breakfast finished until 11 am',
-    nurse: 'Marc',
-    shift: 'Morning',
-    status: 'Open',
-  ),
-  const TaskModel(
-    id: 'xHd4LbEXR7J1PHQHkuCv',
-    resident: 'Mr. Müller',
-    task: 'needs to be washed and have his breakfast finished until 11 am',
-    nurse: 'Marc',
-    shift: 'Morning',
-    status: 'Open',
-  ),
-  const TaskModel(
-    id: 'xHd4LbEXR7J1PHQHkuCv',
-    resident: 'Mr. Müller',
-    task: 'needs to be washed and have his breakfast finished until 11 am',
-    nurse: 'Marc',
-    shift: 'Morning',
-    status: 'Open',
-  ),
-  const TaskModel(
-    id: 'xHd4LbEXR7J1PHQHkuCv',
-    resident: 'Mr. Müller',
-    task: 'needs to be washed and have his breakfast finished until 11 am',
-    nurse: 'Marc',
-    shift: 'Morning',
-    status: 'Open',
-  ),
-];

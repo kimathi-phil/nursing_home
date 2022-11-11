@@ -27,7 +27,7 @@ class SignInScreen extends StatelessWidget {
       child: BlocListener<AuthenticationCubit, AuthenticationState>(
         listener: (context, state) {
           if (state is AuthenticationFailed) {
-            setSnackbar(context, 'Something went wrong...');
+            setSnackbar(context, state.error);
           } else if (state is AuthenticationSuccess) {
             setSnackbar(context, 'Success');
             context.goNamed(
