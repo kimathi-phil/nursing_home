@@ -87,46 +87,101 @@ class TaskDetailCard extends StatelessWidget {
             ],
           ),
           const SizedBox(height: size * 2),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                child: DefaultButton(
-                  widget: Text(
-                    'Move to next shift',
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.headline6!.copyWith(
-                          color: kWhiteColor,
-                          fontWeight: FontWeight.normal,
-                        ),
-                  ),
-                  color: kBlackColor800,
-                  onBtnSelected: () async {
-                    Navigator.pop(context);
+          todo.status != 'Done'
+              ? BlocListener<TasksCubit, TasksState>(
+                  listener: (context, state) {
+                    if (state is TasksFailed) {
+                      setSnackbar(context, state.error);
+                    } else if (state is TaskMapSuccess) {
+                      Navigator.pop(context);
+                      setSnackbar(context, 'Task updated successfully');
+                    }
                   },
-                ),
-              ),
-              const SizedBox(width: size * 4),
-              Expanded(
-                child: DefaultButton(
-                  widget: Text(
-                    'Complete task',
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.headline6!.copyWith(
-                          color: kWhiteColor,
-                          fontWeight: FontWeight.normal,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: DefaultButton(
+                          widget: Text(
+                            'Move to next shift',
+                            textAlign: TextAlign.center,
+                            style:
+                                Theme.of(context).textTheme.headline6!.copyWith(
+                                      color: kWhiteColor,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                          ),
+                          color: kBlackColor800,
+                          onBtnSelected: () async {
+                            updateTaskShift(context);
+                          },
                         ),
+                      ),
+                      const SizedBox(width: size * 4),
+                      Expanded(
+                        child: DefaultButton(
+                          widget: Text(
+                            'Complete task',
+                            textAlign: TextAlign.center,
+                            style:
+                                Theme.of(context).textTheme.headline6!.copyWith(
+                                      color: kWhiteColor,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                          ),
+                          color: kPrimaryColor,
+                          onBtnSelected: () async {
+                            updateTaskStatus(context);
+                          },
+                        ),
+                      ),
+                    ],
                   ),
-                  color: kPrimaryColor,
-                  onBtnSelected: () async {
-                    Navigator.pop(context);
-                  },
+                )
+              : Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: DefaultButton(
+                        widget: Text(
+                          'This task has been completed',
+                          textAlign: TextAlign.center,
+                          style:
+                              Theme.of(context).textTheme.headline6!.copyWith(
+                                    color: kBlackColor800,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                        ),
+                        color: kGreyColor400,
+                        onBtnSelected: () async {
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ],
-          ),
         ],
       ),
+    );
+  }
+
+  Future<void> updateTaskShift(BuildContext context) {
+    return context.read<TasksCubit>().updateTask(
+      todo.id,
+      {
+        'shift': todo.shift == 'Morning'
+            ? 'Evening'
+            : todo.shift == 'Evening'
+                ? 'Night'
+                : 'Morning'
+      },
+    );
+  }
+
+  Future<void> updateTaskStatus(BuildContext context) {
+    return context.read<TasksCubit>().updateTask(
+      todo.id,
+      {'status': 'Done'},
     );
   }
 }

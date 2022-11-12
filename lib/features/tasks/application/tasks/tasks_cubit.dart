@@ -15,10 +15,12 @@ class TasksCubit extends Cubit<TasksState> {
   TasksCubit(
     this._addNewTaskUseCase,
     this._getAllTasksUseCase,
+    this._updateTaskUseCase,
   ) : super(const TasksInitial());
 
   final AddNewTaskUseCase _addNewTaskUseCase;
   final GetAllTasksUseCase _getAllTasksUseCase;
+  final UpdateTaskUseCase _updateTaskUseCase;
   StreamSubscription? _streamSubscription;
 
   @override
@@ -41,5 +43,17 @@ class TasksCubit extends Cubit<TasksState> {
   Future<void> getAllTasks(String uid) async {
     _streamSubscription ??=
         _getAllTasksUseCase(params: uid).map(TasksSuccess.new).listen(emit);
+  }
+
+  Future<void> updateTask(
+    String uid,
+    Map<String, dynamic> updateInfo,
+  ) async {
+    emit(const TasksLoading());
+    await _updateTaskUseCase(paramsOne: uid, paramsTwo: updateInfo).then((tsk) {
+      emit(TaskMapSuccess(updateInfo));
+    }).catchError((dynamic e) {
+      emit(TasksFailed(e.toString()));
+    });
   }
 }

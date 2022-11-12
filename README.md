@@ -3,7 +3,7 @@
 
 <p align="center">
   <a href="https://github.com/kimathi-phil/nursing_home/actions/workflows/ci.yaml"><img alt="ci_build_status" src="https://github.com/kimathi-phil/nursing_home/actions/workflows/ci.yaml/badge.svg"/></a>
-  <a href="https://flutter.dev/docs/development/tools/sdk/releases"><img alt="flutter_version" src="https://img.shields.io/badge/flutter-3.3.6-blue?logo=flutter"/></a>
+  <a href="https://flutter.dev/docs/development/tools/sdk/releases"><img alt="flutter_version" src="https://img.shields.io/badge/flutter-3.3.7-blue?logo=flutter"/></a>
 </p>
 <p align="center">
 <p align="center">A simple task management app for nurses in a nursing home</p>
