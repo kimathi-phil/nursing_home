@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nursing_home/config/config.dart';
+import 'package:nursing_home/config/di/di.dart';
 import 'package:nursing_home/features/shared/presentation/widgets/buttons/default_button.dart';
+import 'package:nursing_home/features/shared/presentation/widgets/common.dart';
+import 'package:nursing_home/features/tasks/application/tasks/tasks_cubit.dart';
 import 'package:nursing_home/features/tasks/domain/entities/entities.dart';
 import 'package:nursing_home/l10n/l10n.dart';
 
@@ -20,31 +24,34 @@ void showTaskDetailModal(BuildContext context, Task todo) {
     ),
     backgroundColor: kGreyColor100,
     builder: (builder) {
-      return StatefulBuilder(
-        builder: (BuildContext context, StateSetter setState) {
-          return Container(
-            constraints: BoxConstraints(
-              minHeight: MediaQuery.of(context).size.height / 2.4,
-              maxHeight: MediaQuery.of(context).size.height / 2.4,
-            ),
-            padding: const EdgeInsets.symmetric(horizontal: size * 2),
-            child: Scaffold(
-              backgroundColor: kGreyColor100,
-              body: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(height: size * 2),
-                    getTaskDetailTItle(context, l10n),
-                    const SizedBox(height: size + 4),
-                    TaskDetailCard(todo: todo),
-                    const SizedBox(height: size * 2),
-                  ],
+      return BlocProvider(
+        create: (context) => getIt<TasksCubit>(),
+        child: StatefulBuilder(
+          builder: (BuildContext context, StateSetter setState) {
+            return Container(
+              constraints: BoxConstraints(
+                minHeight: MediaQuery.of(context).size.height / 2.4,
+                maxHeight: MediaQuery.of(context).size.height / 2.4,
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: size * 2),
+              child: Scaffold(
+                backgroundColor: kGreyColor100,
+                body: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(height: size * 2),
+                      getTaskDetailTItle(context, l10n),
+                      const SizedBox(height: size + 4),
+                      TaskDetailCard(todo: todo),
+                      const SizedBox(height: size * 2),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       );
     },
   );

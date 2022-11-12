@@ -25,7 +25,7 @@ import '../../features/residents/data/repositories/residents_repository_impl.dar
 import '../../features/residents/domain/repositories/residents_repository.dart'
     as _i9;
 import '../../features/residents/domain/usecases/get_all_residents_usecase.dart'
-    as _i26;
+    as _i27;
 import '../../features/residents/domain/usecases/usecases.dart' as _i8;
 import '../../features/shifts/application/shifts/shifts_cubit.dart' as _i11;
 import '../../features/shifts/data/repositories/shifts_repository_impl.dart'
@@ -33,7 +33,7 @@ import '../../features/shifts/data/repositories/shifts_repository_impl.dart'
 import '../../features/shifts/domain/repositories/shifts_repository.dart'
     as _i13;
 import '../../features/shifts/domain/usecases/get_all_shifts_usecase.dart'
-    as _i27;
+    as _i28;
 import '../../features/shifts/domain/usecases/usecases.dart' as _i12;
 import '../../features/status/application/status/status_cubit.dart' as _i16;
 import '../../features/status/data/repositories/status_repository_impl.dart'
@@ -41,15 +41,16 @@ import '../../features/status/data/repositories/status_repository_impl.dart'
 import '../../features/status/domain/repositories/status_repository.dart'
     as _i18;
 import '../../features/status/domain/usecases/get_all_status_usecase.dart'
-    as _i28;
+    as _i29;
 import '../../features/status/domain/usecases/usecases.dart' as _i17;
 import '../../features/tasks/application/tasks/tasks_cubit.dart' as _i22;
 import '../../features/tasks/data/repositories/tasks_repository_impl.dart'
     as _i24;
 import '../../features/tasks/domain/repositories/tasks_repository.dart' as _i23;
-import '../../features/tasks/domain/usecases/add_new_task_usecase.dart' as _i25;
+import '../../features/tasks/domain/usecases/add_new_task_usecase.dart' as _i26;
 import '../../features/tasks/domain/usecases/get_all_tasks_usecase.dart'
-    as _i29;
+    as _i30;
+import '../../features/tasks/domain/usecases/update_task_usecase.dart' as _i25;
 import '../../features/tasks/domain/usecases/usecases.dart'
     as _i21; // ignore_for_file: unnecessary_lambdas
 
@@ -86,17 +87,20 @@ _i1.GetIt $registerDependencies(
   gh.factory<_i22.TasksCubit>(() => _i22.TasksCubit(
         get<_i21.AddNewTaskUseCase>(),
         get<_i21.GetAllTasksUseCase>(),
+        get<_i21.UpdateTaskUseCase>(),
       ));
   gh.lazySingleton<_i23.TasksRepository>(() => _i24.TasksRepositoryImpl());
-  gh.lazySingleton<_i25.AddNewTaskUseCase>(
-      () => _i25.AddNewTaskUseCase(get<_i23.TasksRepository>()));
-  gh.lazySingleton<_i26.GetAllResidentsUseCase>(
-      () => _i26.GetAllResidentsUseCase(get<_i9.ResidentsRepository>()));
-  gh.lazySingleton<_i27.GetAllShiftsUseCase>(
-      () => _i27.GetAllShiftsUseCase(get<_i13.ShiftsRepository>()));
-  gh.lazySingleton<_i28.GetAllStatusUseCase>(
-      () => _i28.GetAllStatusUseCase(get<_i18.StatusRepository>()));
-  gh.lazySingleton<_i29.GetAllTasksUseCase>(
-      () => _i29.GetAllTasksUseCase(get<_i23.TasksRepository>()));
+  gh.lazySingleton<_i25.UpdateTaskUseCase>(
+      () => _i25.UpdateTaskUseCase(get<_i23.TasksRepository>()));
+  gh.lazySingleton<_i26.AddNewTaskUseCase>(
+      () => _i26.AddNewTaskUseCase(get<_i23.TasksRepository>()));
+  gh.lazySingleton<_i27.GetAllResidentsUseCase>(
+      () => _i27.GetAllResidentsUseCase(get<_i9.ResidentsRepository>()));
+  gh.lazySingleton<_i28.GetAllShiftsUseCase>(
+      () => _i28.GetAllShiftsUseCase(get<_i13.ShiftsRepository>()));
+  gh.lazySingleton<_i29.GetAllStatusUseCase>(
+      () => _i29.GetAllStatusUseCase(get<_i18.StatusRepository>()));
+  gh.lazySingleton<_i30.GetAllTasksUseCase>(
+      () => _i30.GetAllTasksUseCase(get<_i23.TasksRepository>()));
   return get;
 }

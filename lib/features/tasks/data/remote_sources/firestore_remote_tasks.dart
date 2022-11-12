@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:nursing_home/features/tasks/data/models/task_model.dart';
 
-class FireStoreRemote {
+class FireStoreRemoteTasks {
   static final _firestore = FirebaseFirestore.instance;
 
   static Future<void> addTask({required TaskModel task}) async {
@@ -20,5 +20,13 @@ class FireStoreRemote {
             return TaskModel.fromJsonAndString(doc.data(), doc.id);
           }).toList(),
         );
+  }
+
+  static Future<void> updateTask({
+    required String uid,
+    required Map<String, dynamic> updateInfo,
+  }) async {
+    var taskCollection = _firestore.collection('tasks');
+    await taskCollection.doc(uid).update(updateInfo);
   }
 }

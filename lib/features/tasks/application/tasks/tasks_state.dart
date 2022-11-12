@@ -31,6 +31,14 @@ class TaskSuccess extends TasksState {
   List<Object?> get props => [task];
 }
 
+class TaskMapSuccess extends TasksState {
+  const TaskMapSuccess(this.updateInfo);
+  final Map<String, dynamic> updateInfo;
+
+  @override
+  List<Object?> get props => [updateInfo];
+}
+
 class TasksFailed extends TasksState {
   const TasksFailed(this.error);
   final String error;
