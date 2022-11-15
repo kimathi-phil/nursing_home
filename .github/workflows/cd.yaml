@@ -1,0 +1,19 @@
+name: CD
+
+on:
+  push:
+    tags:
+      - "*"
+
+jobs:
+  build_android:
+    uses: ./.github/workflows/build_android.yaml
+    with:
+      flutter_channel: stable
+      flutter_version: 3.3.7
+
+  # build_ios:
+  #   uses: ./.github/workflows/build_ios.yaml
+  #   with:
+  #     flutter_channel: stable
+  #     flutter_version: 3.3.7

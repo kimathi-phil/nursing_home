@@ -1,0 +1,102 @@
+name: Build Android
+
+on:
+  workflow_call:
+    inputs:
+      flutter_channel:
+        required: false
+        type: string
+        default: "stable"
+      flutter_version:
+        required: false
+        type: string
+        default: ""
+      runs_on:
+        required: false
+        type: string
+        default: "ubuntu-latest"
+      setup:
+        required: false
+        type: string
+        default: ""
+      test_recursion:
+        required: false
+        type: boolean
+        default: false
+      working_directory:
+        required: false
+        type: string
+        default: "."
+      artifacts_directory:
+        required: false
+        type: string
+        default: "build/app/outputs"
+
+jobs:
+  build:
+    defaults:
+      run:
+        working-directory: ${{inputs.working_directory}}
+
+    runs-on: ${{inputs.runs_on}}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{inputs.flutter_version}}
+          channel: ${{inputs.flutter_channel}}
+          cache: true
+          cache-key: flutter-:os:-:channel:-:version:-:arch:-:hash:-${{ hashFiles('**/pubspec.lock') }}
+
+      - name: Install Dependencies
+        run: |
+          flutter pub global activate very_good_cli
+          very_good --analytics false
+          very_good packages get --recursive
+      - name: Run Setup
+        if: "${{inputs.setup != ''}}"
+        run: ${{inputs.setup}}
+
+      - name: Decrypt Keys
+        run: sh ${{inputs.working_directory}}/.github/scripts/decrypt_android_secrets.sh
+        env:
+          ANDROID_KEYS_SECRET_PASSPHRASE: ${{ secrets.ANDROID_KEYS_SECRET_PASSPHRASE }}
+
+      - name: Build APK
+        run: flutter build apk --flavor production --target lib/main_production.dart --obfuscate --split-debug-info=${{inputs.artifacts_directory}}/flutter-apk
+
+      - name: Build APPBUNDLE
+        run: flutter build appbundle --flavor production --target lib/main_production.dart --obfuscate --split-debug-info=${{inputs.artifacts_directory}}/bundle/release
+
+      - name: Upload APK to Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: release-apk
+          path: ${{inputs.artifacts_directory}}/flutter-apk/app-release.apk
+
+      - name: Upload APPBUNDLE to Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: release-appbundle
+          path: ${{inputs.artifacts_directory}}/bundle/release/app-release.aab
+
+      - name: Create Github Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: ${{inputs.artifacts_directory}}/bundle/release/*.aab, ${{inputs.artifacts_directory}}/flutter-apk/*.apk
+          # bodyFile: "body.md"
+          token: "${{ secrets.GITHUB_TOKEN }}"
+
+      # NOTE: This publishes the release to the 'Open Testing' track on the google play console
+      # To publish to the 'Production' track, first adjust service account permissions on google play console to 'admin'
+      # then change the lane below from 'closed_beta' to 'production'
+
+      # - name: Run Fastlane
+      #   uses: maierj/fastlane-action@v1.4.0
+      #   with:
+      #     lane: closed_beta
+      #     subdirectory: android

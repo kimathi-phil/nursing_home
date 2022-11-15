@@ -51,7 +51,6 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.bynarr.nursing_home"
         minSdkVersion 21
         targetSdkVersion 33
