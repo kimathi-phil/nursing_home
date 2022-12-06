@@ -39,6 +39,10 @@ Clone the repo to your local machine
 git clone https://github.com/kimathi-phil/nursing_home.git
 ```
 
+Navigate to the project folder  
+```git
+cd nursing_home
+```
 
 This project contains 3 flavors:
 - development
